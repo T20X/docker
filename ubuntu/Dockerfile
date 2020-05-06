@@ -1,5 +1,5 @@
 ARG NRUSER=maine
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 ARG NRUSER
 
 RUN apt-get update
@@ -11,7 +11,8 @@ RUN useradd -m -s /bin/bash ${NRUSER} \
     && sed -ri "s/%sudo.*/%sudo ALL=(ALL) NOPASSWD: ALL/g" /etc/sudoers
 
 RUN apt-get update && apt-get install -y --no-install-recommends perl unzip net-tools ssh bash telnet curl \
-    && apt-get install -y --no-install-recommends vim binutils bash less locate inetutils-ping lsof git 
+    && apt-get install -y --no-install-recommends vim binutils bash less locate inetutils-ping lsof git python3-dev \ 
+    && apt-get install -y --no-install-recommends cmake build-essential
 
 RUN updatedb
 
