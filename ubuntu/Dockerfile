@@ -1,5 +1,6 @@
 ARG NRUSER=maine
 FROM ubuntu:20.04
+ARG DEBIAN_FRONTEND=noninteractive
 ARG NRUSER
 
 RUN apt-get update
@@ -12,7 +13,7 @@ RUN useradd -m -s /bin/bash ${NRUSER} \
 
 RUN apt-get update && apt-get install -y --no-install-recommends perl unzip net-tools ssh bash telnet curl \
     && apt-get install -y --no-install-recommends vim binutils bash less locate inetutils-ping lsof git python3-dev \ 
-    && apt-get install -y --no-install-recommends cmake build-essential
+    && apt-get install -y --no-install-recommends cmake build-essential clang
 
 RUN updatedb
 
